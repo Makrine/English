@@ -1,0 +1,31 @@
+@font-face {
+    font-family: AncientModernTales;
+    src: url("Assets/Fonts/AncientModernTales.ttf");
+  }
+  
+.container {
+    display: flex;
+    flex-direction: row;
+}
+.col {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+.avatar-saba
+{
+    width: 50%;
+    border-radius: 50%;
+}
+
+.avatar-keti
+{
+    width: 50%;
+    border-radius: 50%;
+}
+
+.student-name {
+    font-family: AncientModernTales;
+    font-size: 50px;
+    color: black;
+}
