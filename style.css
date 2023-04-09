@@ -2,6 +2,12 @@
     font-family: AncientModernTales;
     src: url("Assets/Fonts/AncientModernTales.ttf");
   }
+
+  body
+  {
+    background-color: lightblue;
+    font-family: AncientModernTales, sans-serif;
+  }
   
   .container {
     display: flex;
@@ -11,15 +17,13 @@
   .col {
     flex: 1;
     padding: 10px;
+  }
+
+  .avatar, h2 {
     text-align: center;
   }
   
-  .avatar-saba {
-    width: 50%;
-    border-radius: 50%;
-  }
-  
-  .avatar-keti {
+  .avatar-saba, .avatar-keti {
     width: 50%;
     border-radius: 50%;
   }
@@ -29,7 +33,15 @@
     font-size: 50px;
     color: black;
   }
-  
+  .txt, .lvl {
+        font-family: AncientModernTales;
+        font-size: 20px;
+        color: black;
+    }
+    .lvl
+    {
+        font-size: 40px;
+    }
   /* media query for mobile devices */
   @media (max-width: 768px) {
     .container {
