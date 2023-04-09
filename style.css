@@ -3,29 +3,37 @@
     src: url("Assets/Fonts/AncientModernTales.ttf");
   }
   
-.container {
+  .container {
     display: flex;
     flex-direction: row;
-}
-.col {
+  }
+  
+  .col {
     flex: 1;
     padding: 10px;
     text-align: center;
-}
-.avatar-saba
-{
+  }
+  
+  .avatar-saba {
     width: 50%;
     border-radius: 50%;
-}
-
-.avatar-keti
-{
+  }
+  
+  .avatar-keti {
     width: 50%;
     border-radius: 50%;
-}
-
-.student-name {
+  }
+  
+  .student-name {
     font-family: AncientModernTales;
     font-size: 50px;
     color: black;
-}
+  }
+  
+  /* media query for mobile devices */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+  }
+  
