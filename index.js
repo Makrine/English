@@ -10,11 +10,6 @@ editAllBars("keti", false, false, false, false, false, false, false,
 false, false, false, true, false, false, false, true, true, false,
 false, true, true, true, true, true, true, true, true);
 
-
-getCSVDataValue("keti", "xp")
-  .then(score => console.log(score)); // Output: 20
-
-
 });
 
 function updateXP(name, amount)
@@ -103,6 +98,8 @@ function editBar(bar, percentage, lock=false, name)
     var progressBars = document.getElementsByClassName(bar);
     if(name == "keti") index = 1;
 
+    
+
     if(lock)
     {
         var parent = progressBars[index].parentNode.parentNode;
@@ -111,9 +108,11 @@ function editBar(bar, percentage, lock=false, name)
         percentage = 0;
     }
 
-    // getCSVDataValue(name, dictionary.get(bar))
-    // .then(value => progressBars[index].style.width = value + "%");
-    
+    getCSVDataValue(name, dictionary.get("articles-bar")).then(result => {
+        progressBars[index].style.width = result + "%";
+      });
+
+    //progressBars[index].style.width = percentage + "%";
 }
 
 function generateBars()
@@ -267,21 +266,18 @@ function readCSV()
 
 function getCSVDataValue(name, key) {
     return fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv?token=GHSAT0AAAAAAB7INCJHNLARPZGLWFNQ7GQEZBT5VOA')
-      .then(response => response.text())
-      .then(data => {
-        // Parse CSV data using a library like Papaparse
+        .then(response => response.text())
+        .then(data => {
         const parsedData = Papa.parse(data, { header: true });
-        // Find the object with the given name
-        const obj = parsedData.data.find(obj => obj.name === name);
+        const myObj = parsedData.data.find(obj => obj.name === name);
+        const result = myObj[key];
+        return result;
+        })
+        .catch(error => console.error(error));
+}
   
-        // Return the value of the given key in the object
-        return obj[key];
-      })
-      .catch(error => console.error(error));
-  }
-  
-  
-  var dictionary = new Map([
+
+var dictionary = new Map([
     ["articles-bar", "articles"],
     ["spelling-bar", "spelling"],
     ["pronunciation-bar", "pronunciation"],
@@ -309,4 +305,3 @@ function getCSVDataValue(name, key) {
     ["future-in-the-past-perfect-continuous-bar", "futureInThePastPerfectContinuous"],
     ["phrasal-verbs-bar", "phrasalVerbs"]
   ]);
-  
