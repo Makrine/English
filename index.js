@@ -2,18 +2,48 @@ $(document).ready(function() {
   
 generateBars();
 
-editInfo("saba", false, false, false, false, false, false, false,
+editAllBars("saba", false, false, false, false, false, false, false,
 false, false, false, true, false, false, false, true, true, false,
 false, true, true, true, true, true, true, true, true);
 
-editInfo("keti", false, false, false, false, false, false, false,
+editAllBars("keti", false, false, false, false, false, false, false,
 false, false, false, true, false, false, false, true, true, false,
 false, true, true, true, true, true, true, true, true);
 
 
 });
 
-function editInfo(name,
+function updateXP(name, amount)
+{
+    var xpBar;
+    if(name == "saba") xpBar = document.getElementById("xp-bar-saba");
+    else xpBar = document.getElementById("xp-bar-keti");
+
+    var currentAmount = xpBar.style.width;
+    // remove the % sign
+    currentAmount = currentAmount.substring(0, currentAmount.length - 1);
+    currentAmount = parseInt(currentAmount);
+    var newAmount = currentAmount + amount;
+
+    if(newAmount >= 100) {newAmount %= 100; updateLevel(name);}
+
+    xpBar.style.width = newAmount + "%";
+    
+}
+
+function updateLevel(name)
+{
+    var lvl;
+    if(name == "saba") lvl = document.getElementById("lvl-saba");
+    else lvl = document.getElementById("lvl-keti");
+
+    var currentLevel = lvl.innerHTML;
+    currentLevel = parseInt(currentLevel);
+    var newLevel = currentLevel + 1;
+    lvl.innerHTML = newLevel;
+}
+
+function editAllBars(name,
     articles, spelling, pronunciation, ob_pron, pos_pron, ref_pron, irr_verbs,
     presentSimple, presentContinuous, presentPerfect, presentPerfectContinuous,
     pastSimple, usedTo, pastContinuous, pastPerfect, pastPerfectContinuous,
@@ -79,18 +109,6 @@ function editBar(bar, percentage, lock=false, name)
         percentage = 0;
     }
     progressBars[index].style.width = percentage + "%";
-    // if(lock)
-    // {
-    //     var title = progressBar.querySelector('.h3');
-    //     title.innerHTML +=" <img class='lock-icon' src='Assets/lock-solid.svg'/>";
-    // }
-    // progressBar.style.width = percentage + "%";
-    // bar.style.backgroundColor = "#ff0000";
-
-    // if(lock)
-    // {
-    //     bar.style.backgroundColor = "#808080";
-    // }
 }
 
 function generateBars()

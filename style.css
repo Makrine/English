@@ -1,12 +1,12 @@
 @font-face {
-font-family: AncientModernTales;
-src: url("Assets/Fonts/AncientModernTales.ttf");
+font-family: BreatheFireIii;
+src: url("Assets/Fonts/BreatheFireIii.ttf");
 }
 
 body
 {
 background-color: lightblue;
-font-family: AncientModernTales, sans-serif;
+font-family: BreatheFireIii, sans-serif;
 }
 
 .container {
@@ -29,16 +29,16 @@ border-radius: 50%;
 }
 
 .student-name {
-font-family: AncientModernTales;
+font-family: BreatheFireIii;
 font-size: 50px;
 color: black;
 }
-.txt, #lvl-saba, #lvl-keti, .bar-group{
-    font-family: AncientModernTales;
+.txt, .lvl, #lvl-saba, #lvl-keti, .bar-group{
+    font-family: BreatheFireIii;
     font-size: 20px;
     color: black;
 }
-#lvl-saba, #lvl-keti
+.lvl, #lvl-saba, #lvl-keti
 {
     font-size: 40px;
 }
