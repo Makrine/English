@@ -64,6 +64,16 @@ function editAllBars(name,
         xp = document.getElementById("xp-bar-keti");
     }
 
+    getCSVDataValue(name, "level").then(result => {
+        if(level != null)
+            level.innerHTML = result;
+      });
+      
+    getCSVDataValue(name, "xp").then(result => {
+        xp.style.width = result + "%";
+      });
+      
+
     editBar("articles-bar", 10, articles, name);
     editBar("spelling-bar", 10, spelling, name);
     editBar("pronunciation-bar", 10, pronunciation, name);
@@ -264,8 +274,7 @@ function readCSV()
 
 function getCSVDataValue(name, key) { 
 
-    const token = "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";
-    return fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv', {headers: {'Authorization': `token ${token}`}})
+    return fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv')
         .then(response => response.text())
         .then(data => {
         const parsedData = Papa.parse(data, { header: true });
