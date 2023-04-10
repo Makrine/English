@@ -263,7 +263,9 @@ function readCSV()
 
 
 function getCSVDataValue(name, key) { 
-    return fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv?token=GHSAT0AAAAAAB7INCJGWUXXU2OYCNRDEJO6ZBT7PGQ')
+
+    const token = "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";
+    return fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv', {headers: {'Authorization': `token ${token}`}})
         .then(response => response.text())
         .then(data => {
         const parsedData = Papa.parse(data, { header: true });
