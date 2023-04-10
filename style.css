@@ -1,51 +1,59 @@
 @font-face {
-    font-family: AncientModernTales;
-    src: url("Assets/Fonts/AncientModernTales.ttf");
-  }
+font-family: AncientModernTales;
+src: url("Assets/Fonts/AncientModernTales.ttf");
+}
 
-  body
-  {
-    background-color: lightblue;
-    font-family: AncientModernTales, sans-serif;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .col {
-    flex: 1;
-    padding: 10px;
-  }
+body
+{
+background-color: lightblue;
+font-family: AncientModernTales, sans-serif;
+}
 
-  .avatar, h2 {
-    text-align: center;
-  }
-  
-  .avatar-saba, .avatar-keti {
-    width: 50%;
-    border-radius: 50%;
-  }
-  
-  .student-name {
+.container {
+display: flex;
+flex-direction: row;
+}
+
+.col {
+flex: 1;
+padding: 10px;
+}
+
+.avatar, h2 {
+text-align: center;
+}
+
+.avatar-saba, .avatar-keti {
+width: 50%;
+border-radius: 50%;
+}
+
+.student-name {
+font-family: AncientModernTales;
+font-size: 50px;
+color: black;
+}
+.txt, #lvl-saba, #lvl-keti, .bar-group{
     font-family: AncientModernTales;
-    font-size: 50px;
+    font-size: 20px;
     color: black;
-  }
-  .txt, .lvl {
-        font-family: AncientModernTales;
-        font-size: 20px;
-        color: black;
-    }
-    .lvl
-    {
-        font-size: 40px;
-    }
-  /* media query for mobile devices */
-  @media (max-width: 768px) {
-    .container {
-      flex-direction: column;
-    }
-  }
-  
+}
+#lvl-saba, #lvl-keti
+{
+    font-size: 40px;
+}
+.bar-group
+{
+    font-size: 30px;
+    text-align: left;
+}
+.lock-icon
+{
+    width: 3%;
+}
+/* media query for mobile devices */
+@media (max-width: 768px) {
+.container {
+    flex-direction: column;
+}
+}
