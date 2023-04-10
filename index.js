@@ -11,6 +11,10 @@ false, false, false, true, false, false, false, true, true, false,
 false, true, true, true, true, true, true, true, true);
 
 
+getCSVDataValue("keti", "xp")
+  .then(score => console.log(score)); // Output: 20
+
+
 });
 
 function updateXP(name, amount)
@@ -99,8 +103,6 @@ function editBar(bar, percentage, lock=false, name)
     var progressBars = document.getElementsByClassName(bar);
     if(name == "keti") index = 1;
 
-    
-
     if(lock)
     {
         var parent = progressBars[index].parentNode.parentNode;
@@ -108,7 +110,10 @@ function editBar(bar, percentage, lock=false, name)
         title.innerHTML +=" <img class='lock-icon' src='Assets/lock-solid.svg'/>";
         percentage = 0;
     }
-    progressBars[index].style.width = percentage + "%";
+
+    // getCSVDataValue(name, dictionary.get(bar))
+    // .then(value => progressBars[index].style.width = value + "%");
+    
 }
 
 function generateBars()
@@ -242,3 +247,66 @@ function createProgressBar(barName, percentage, className)
 
     return barContainer;
 }
+
+
+function readCSV()
+{
+    fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv?token=GHSAT0AAAAAAB7INCJHNLARPZGLWFNQ7GQEZBT5VOA')
+  .then(response => response.text())
+  .then(data => {
+    // Parse CSV data using a library like Papaparse
+    const parsedData = Papa.parse(data, { header: true });
+    
+    // Access the parsed data as an array of objects
+    console.log(parsedData.data);
+  })
+  .catch(error => console.error(error));
+
+}
+
+
+function getCSVDataValue(name, key) {
+    return fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv?token=GHSAT0AAAAAAB7INCJHNLARPZGLWFNQ7GQEZBT5VOA')
+      .then(response => response.text())
+      .then(data => {
+        // Parse CSV data using a library like Papaparse
+        const parsedData = Papa.parse(data, { header: true });
+        // Find the object with the given name
+        const obj = parsedData.data.find(obj => obj.name === name);
+  
+        // Return the value of the given key in the object
+        return obj[key];
+      })
+      .catch(error => console.error(error));
+  }
+  
+  
+  var dictionary = new Map([
+    ["articles-bar", "articles"],
+    ["spelling-bar", "spelling"],
+    ["pronunciation-bar", "pronunciation"],
+    ["ob_pron-bar", "ob_pron"],
+    ["pos_pron-bar", "pos_pron"],
+    ["ref_pron-bar", "ref_pron"],
+    ["irr_verbs-bar", "irr_verbs"],
+    ["present-simple-bar", "presentSimple"],
+    ["present-continuous-bar", "presentContinuous"],
+    ["present-perfect-bar", "presentPerfect"],
+    ["present-perfect-continuous-bar", "presentPerfectContinuous"],
+    ["past-simple-bar", "pastSimple"],
+    ["used-to-bar", "usedTo"],
+    ["past-continuous-bar", "pastContinuous"],
+    ["past-perfect-bar", "pastPerfect"],
+    ["past-perfect-continuous-bar", "pastPerfectContinuous"],
+    ["future-simple-bar", "futureSimple"],
+    ["going-to-bar", "goingTo"],
+    ["future-continuous-bar", "futureContinuous"],
+    ["future-perfect-bar", "futurePerfect"],
+    ["future-perfect-continuous-bar", "futurePerfectContinuous"],
+    ["future-in-the-past-simple-bar", "futureInThePastSimple"],
+    ["future-in-the-past-continuous-bar", "futureInThePastContinuous"],
+    ["future-in-the-past-perfect-bar", "futureInThePastPerfect"],
+    ["future-in-the-past-perfect-continuous-bar", "futureInThePastPerfectContinuous"],
+    ["phrasal-verbs-bar", "phrasalVerbs"]
+  ]);
+  
