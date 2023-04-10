@@ -108,11 +108,9 @@ function editBar(bar, percentage, lock=false, name)
         percentage = 0;
     }
 
-    getCSVDataValue(name, dictionary.get("articles-bar")).then(result => {
+    getCSVDataValue(name, dictionary.get(bar)).then(result => {
         progressBars[index].style.width = result + "%";
       });
-
-    //progressBars[index].style.width = percentage + "%";
 }
 
 function generateBars()
@@ -264,8 +262,8 @@ function readCSV()
 }
 
 
-function getCSVDataValue(name, key) {
-    return fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv?token=GHSAT0AAAAAAB7INCJHNLARPZGLWFNQ7GQEZBT5VOA')
+function getCSVDataValue(name, key) { 
+    return fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv?token=GHSAT0AAAAAAB7INCJGWUXXU2OYCNRDEJO6ZBT7PGQ')
         .then(response => response.text())
         .then(data => {
         const parsedData = Papa.parse(data, { header: true });
@@ -281,10 +279,10 @@ var dictionary = new Map([
     ["articles-bar", "articles"],
     ["spelling-bar", "spelling"],
     ["pronunciation-bar", "pronunciation"],
-    ["ob_pron-bar", "ob_pron"],
-    ["pos_pron-bar", "pos_pron"],
-    ["ref_pron-bar", "ref_pron"],
-    ["irr_verbs-bar", "irr_verbs"],
+    ["objective-bar", "obj_pronouns"],
+    ["possessive-bar", "poss_pronouns"],
+    ["reflective-bar", "ref_pronouns"],
+    ["irregular-bar", "irr_verbs"],
     ["present-simple-bar", "presentSimple"],
     ["present-continuous-bar", "presentContinuous"],
     ["present-perfect-bar", "presentPerfect"],
@@ -303,5 +301,5 @@ var dictionary = new Map([
     ["future-in-the-past-continuous-bar", "futureInThePastContinuous"],
     ["future-in-the-past-perfect-bar", "futureInThePastPerfect"],
     ["future-in-the-past-perfect-continuous-bar", "futureInThePastPerfectContinuous"],
-    ["phrasal-verbs-bar", "phrasalVerbs"]
+    ["phrasal-bar", "phrasalVerbs"]
   ]);
