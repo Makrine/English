@@ -56,6 +56,8 @@ function editAllBars(name,
     var level;
     var xp;
 
+    var currLvl = 1;
+    var currXP = 0;
     console.log(name);
     if(name == "saba")
     {
@@ -71,12 +73,15 @@ function editAllBars(name,
     getCSVDataValue(name, "level").then(result => {
         if(level != null)
             level.innerHTML = result;
+            currLvl = result;
       });
       
     getCSVDataValue(name, "xp").then(result => {
         xp.style.width = result + "%";
+        currXP = result;
       });
       
+    updateXPPointsNumerical(currLvl, currXP);
 
     editBar("articles-bar", 10, articles, name);
     editBar("spelling-bar", 10, spelling, name);
@@ -282,6 +287,28 @@ function getCSVDataValue(name, key) {
         .catch(error => console.error(error));
 }
   
+
+
+function updateXPPointsNumerical(lvl, xp)
+{
+    var xpPoints = document.getElementById("xp-points");
+    var nextLevel = lvl + 1;
+    var requiredXPForNextLevel = xpPointsLevelDict.get(nextLevel);
+    xpPoints.innerHTML = xp + "/" + requiredXPForNextLevel;
+}
+
+var xpPointsLevelDict = new Map([
+    [2, 100],
+    [3, 100],
+    [4, 100],
+    [5, 150],
+    [6, 200],
+    [7, 250],
+    [8, 250],
+    [9, 300],
+    [10, 400],
+    [11, 500]
+])
 
 var dictionary = new Map([
     ["articles-bar", "articles"],
