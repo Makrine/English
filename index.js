@@ -351,8 +351,14 @@ function updateXPPointsNumerical(xp, bar)
             lvl = key;
             xp -= value;
         }
+        else
+        {
+            break;
+        }
     }
-    xpPoints.innerHTML = xp + "/" + (xpPointsLevelDict.get(lvl + 1) - xpPointsLevelDict.get(lvl));
+    if(lvl == 1)
+        xpPoints.innerHTML = xp + "/" + xpPointsLevelDict.get(lvl + 1);
+    else xpPoints.innerHTML = xp + "/" + (xpPointsLevelDict.get(lvl + 1) - xpPointsLevelDict.get(lvl));
     bar.style.width = xp + "%";
     return lvl;
 }
