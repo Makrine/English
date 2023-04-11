@@ -327,7 +327,7 @@ function readCSV()
 
 function getCSVDataValue(name, key) { 
 
-    return fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv')
+    return fetch('https://raw.githubusercontent.com/Makrine/English/master/Data/data.csv', {cache : "no-cache"})
         .then(response => response.text())
         .then(data => {
         const parsedData = Papa.parse(data, { header: true });
