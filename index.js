@@ -333,6 +333,7 @@ function getCSVDataValue(name, key) {
         const parsedData = Papa.parse(data, { header: true });
         const myObj = parsedData.data.find(obj => obj.name === name);
         const result = myObj[key];
+        if(key == "xp") console.log(parsedData);
         return result;
         })
         .catch(error => console.error(error));
@@ -342,6 +343,7 @@ function getCSVDataValue(name, key) {
 
 function updateXPPointsNumerical(xp, bar)
 {
+    console.log(xp);
     var xpPoints = document.getElementById("xp-points");
     var lvl = 1;
 
@@ -359,6 +361,8 @@ function updateXPPointsNumerical(xp, bar)
     if(lvl == 1)
         xpPoints.innerHTML = xp + "/" + xpPointsLevelDict.get(lvl + 1);
     else xpPoints.innerHTML = xp + "/" + (xpPointsLevelDict.get(lvl + 1) - xpPointsLevelDict.get(lvl));
+
+    console.log(xp);
     bar.style.width = xp + "%";
     return lvl;
 }
