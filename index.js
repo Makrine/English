@@ -121,19 +121,17 @@ function editAllBars(name,
         level = document.getElementById("lvl-keti");
         xp = document.getElementById("xp-bar-keti");
     }
-
-    getCSVDataValue(name, "level").then(result => {
-        if(level != null)
-            level.innerHTML = result;
-            currLvl = result;
-      });
       
-    getCSVDataValue(name, "xp").then(result => {
-        xp.style.width = result + "%";
+      getCSVDataValue(name, "xp").then(result => {
+        //xp.style.width = result + "%";
         currXP = result;
+
+        var curLvl = updateXPPointsNumerical(currXP, xp);
+
+        level.innerHTML = curLvl;
       });
       
-    updateXPPointsNumerical(currLvl, currXP);
+    
 
     editBar("articles-bar", 10, articles, name);
     editBar("spelling-bar", 10, spelling, name);
@@ -342,25 +340,34 @@ function getCSVDataValue(name, key) {
   
 
 
-function updateXPPointsNumerical(lvl, xp)
+function updateXPPointsNumerical(xp, bar)
 {
     var xpPoints = document.getElementById("xp-points");
-    var nextLevel = lvl + 1;
-    var requiredXPForNextLevel = xpPointsLevelDict.get(nextLevel);
-    xpPoints.innerHTML = xp + "/" + requiredXPForNextLevel;
+    var lvl = 1;
+
+    for (var [key, value] of xpPointsLevelDict) {
+        if (xp >= value)
+        {
+            lvl = key;
+            xp -= value;
+        }
+    }
+    xpPoints.innerHTML = xp + "/" + (xpPointsLevelDict.get(lvl + 1) - xpPointsLevelDict.get(lvl));
+    bar.style.width = xp + "%";
+    return lvl;
 }
 
 var xpPointsLevelDict = new Map([
     [2, 100],
-    [3, 100],
-    [4, 100],
-    [5, 150],
-    [6, 200],
-    [7, 250],
-    [8, 250],
-    [9, 300],
-    [10, 400],
-    [11, 500]
+    [3, 200],
+    [4, 300],
+    [5, 350],
+    [6, 400],
+    [7, 450],
+    [8, 550],
+    [9, 600],
+    [10, 700],
+    [11, 800]
 ])
 
 var dictionary = new Map([
