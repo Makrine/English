@@ -242,7 +242,7 @@ function createProgressBar(barName, percentage, className)
 
     // set style height to 24px and width to percentage + "%"
     div2.style.height = "24px";
-    div2.style.width = percentage + "%";
+    div2.style.width = 0 + "%";
 
     // append div2 to div
     div.appendChild(div2);
