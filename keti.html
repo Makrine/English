@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>English Learning</title>
+	<title>English Learning: Saba</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">   
     <script src="jquery-3.6.4.min.js"></script> 
     <script src="papaparse.js"></script>     
-    <script src="index.js"></script>      
+    <script src="index.js"></script>     
+    <script src="pass.js"></script>   
 </head>
 <body>
-    <a href="index.html"><button class="button button-left">Back</button></a>
-            <div class="avatar">
-                <img src="Assets/keti.png" alt="Avatar-keti" class="avatar-keti">
-                <h2 class="student-name">Keti Jariashvili</h2>
-            </div>
-            <br>
-            <h2 class="lvl">Level: <k id="lvl-keti">1</k></h2>
-            <h3 class="txt">XP</h3>
-			<div class="w3-light-grey">
-                <div class="w3-green" id="xp-bar-keti" style="height:24px;width:0%"></div>
-              </div>
-              <div id="xp-points">0/100</div>
-              <div class="bars-container"></div>
+    <div id="body-login">
+  
+        <div>
+          <h1>Welcome Keti!</h1>
+      <br><br>
+            <input type="password" id="pass" placeholder="Enter password">
+            <br><br>
+            <button onclick="checkPassword()" class="button-login">Login</button>
+            <a href="index.html"><button class="button-login">Back</button></a>
+            <script>
+                function checkPassword() {
+                  const password = document.getElementById('pass').value;
+                  if (password === keti) {
+                    loginSuccess();
+                  } else {
+                    alert("Incorrect password, please try again.");
+                  }
+                }
+              </script>
+        </div>   
+    </div>           
               
 </body>
 </html>

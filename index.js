@@ -1,19 +1,71 @@
+
+var filename = "saba.html"; // Default value
 $(document).ready(function() {
-    var filename = location.href.split("/").slice(-1); // Get the last part of the URL (i.e. the filename)
+    filename = location.href.split("/").slice(-1); // Get the last part of the URL (i.e. the filename)
     
-generateBars();
 
-if(filename[0] == "saba.html")
-    editAllBars("saba", false, false, false, false, false, false, false,
-false, false, false, true, false, false, false, true, true, false,
-false, true, true, true, true, true, true, true, true);
-
- else if(filename[0] == "keti.html") //console.log("keti");
-    editAllBars("keti", false, false, false, false, false, false, false,
-    false, false, false, true, false, false, false, true, true, false,
-    false, true, true, true, true, true, true, true, true);
+    var login = document.getElementById("body-login");
+    if(login != null) { console.log("login page"); return;}
 
 });
+
+
+function loginSuccess()
+{
+    var body = document.getElementsByTagName("body");
+
+    if(filename[0] == "saba.html")
+    body[0].innerHTML = 
+
+   `<a href="index.html"><button class="button button-left">Back</button></a>
+    <div class="avatar">
+        <img src="Assets/saba.png" alt="Avatar-saba" class="avatar-saba">
+        <h2 class="student-name">Saba Jariashvili</h2>
+    </div>
+    <br>
+    <h2 class="lvl">Level: <k id="lvl-saba">1</k></h2>
+    <h3 class="txt">XP</h3>
+    <div class="w3-light-grey">
+        <div class="w3-green" id="xp-bar-saba" style="height:24px;width:0%"></div>
+        
+      </div>
+      <div id="xp-points">0/100</div>
+
+      <div class="bars-container"></div>`;
+
+      else
+      {
+        body[0].innerHTML = 
+        `
+        <a href="index.html"><button class="button button-left">Back</button></a>
+            <div class="avatar">
+                <img src="Assets/keti.png" alt="Avatar-keti" class="avatar-keti">
+                <h2 class="student-name">Keti Jariashvili</h2>
+            </div>
+            <br>
+            <h2 class="lvl">Level: <k id="lvl-keti">1</k></h2>
+            <h3 class="txt">XP</h3>
+			<div class="w3-light-grey">
+                <div class="w3-green" id="xp-bar-keti" style="height:24px;width:0%"></div>
+              </div>
+              <div id="xp-points">0/100</div>
+              <div class="bars-container"></div>
+        `;
+      }
+
+
+    generateBars();
+
+    if(filename[0] == "saba.html")
+        editAllBars("saba", false, false, false, false, false, false, false,
+    false, false, false, true, false, false, false, true, true, false,
+    false, true, true, true, true, true, true, true, true);
+    
+     else if(filename[0] == "keti.html") //console.log("keti");
+        editAllBars("keti", false, false, false, false, false, false, false,
+        false, false, false, true, false, false, false, true, true, false,
+        false, true, true, true, true, true, true, true, true);
+}
 
 function updateXP(name, amount)
 {
