@@ -187,6 +187,7 @@ function generateBars()
     var barsContainer = document.getElementsByClassName("bars-container");
     barsContainer = barsContainer[0];
 
+        var skills = createTitle("Skills");
         var articles = createProgressBar("Articles (a/an/the)", 10, "articles-bar");
         var spelling = createProgressBar("Spelling", 10, "spelling-bar");
         var pronunciation = createProgressBar("Pronunciation", 10, "pronunciation-bar");
@@ -222,7 +223,7 @@ function generateBars()
         var futureInThePastPerfect = createProgressBar("Future in the Past Perfect", 10, "future-in-the-past-perfect-bar");
         var futureInThePastPerfectContinuous = createProgressBar("Future in the Past Perfect Continuous", 10, "future-in-the-past-perfect-continuous-bar");
         
-
+        barsContainer.appendChild(skills);
         barsContainer.appendChild(articles);
         barsContainer.appendChild(spelling);
         barsContainer.appendChild(pronunciation);

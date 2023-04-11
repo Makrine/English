@@ -84,6 +84,10 @@ color: black;
 @media (max-width: 768px) {
 .container {
     flex-direction: column;
+  
+}
+.avatar{
+    width: 100%;
 }
 }
 
