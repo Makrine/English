@@ -1,14 +1,17 @@
 $(document).ready(function() {
-  
+    var filename = location.href.split("/").slice(-1); // Get the last part of the URL (i.e. the filename)
+    
 generateBars();
 
-editAllBars("saba", false, false, false, false, false, false, false,
+if(filename[0] == "saba.html")
+    editAllBars("saba", false, false, false, false, false, false, false,
 false, false, false, true, false, false, false, true, true, false,
 false, true, true, true, true, true, true, true, true);
 
-editAllBars("keti", false, false, false, false, false, false, false,
-false, false, false, true, false, false, false, true, true, false,
-false, true, true, true, true, true, true, true, true);
+ else if(filename[0] == "keti.html") //console.log("keti");
+    editAllBars("keti", false, false, false, false, false, false, false,
+    false, false, false, true, false, false, false, true, true, false,
+    false, true, true, true, true, true, true, true, true);
 
 });
 
@@ -53,6 +56,7 @@ function editAllBars(name,
     var level;
     var xp;
 
+    console.log(name);
     if(name == "saba")
     {
         level = document.getElementById("lvl-saba");
@@ -106,8 +110,6 @@ function editBar(bar, percentage, lock=false, name)
 {
     var index = 0;
     var progressBars = document.getElementsByClassName(bar);
-    if(name == "keti") index = 1;
-
     
 
     if(lock)
@@ -125,10 +127,9 @@ function editBar(bar, percentage, lock=false, name)
 
 function generateBars()
 {
-    var barsContainers = document.getElementsByClassName("bars-container");
+    var barsContainer = document.getElementsByClassName("bars-container");
+    barsContainer = barsContainer[0];
 
-    for(var i = 0; i < barsContainers.length; i++)
-    {
         var articles = createProgressBar("Articles (a/an/the)", 10, "articles-bar");
         var spelling = createProgressBar("Spelling", 10, "spelling-bar");
         var pronunciation = createProgressBar("Pronunciation", 10, "pronunciation-bar");
@@ -136,6 +137,7 @@ function generateBars()
         var pos_pron = createProgressBar("Possessive Pronouns", 10, "possessive-bar");
         var ref_pron = createProgressBar("Reflective Pronouns", 10, "reflective-bar");
         var irr_verbs = createProgressBar("Irregular Verbs", 10, "irregular-bar");
+        var phrasalVerbs = createProgressBar("Phrasal Verbs", 10, "phrasal-bar");
 
         var presentTenses = createTitle("Present Tenses");
         var presentSimple = createProgressBar("Present Simple", 10, "present-simple-bar");
@@ -162,48 +164,43 @@ function generateBars()
         var futureInThePastContinuous = createProgressBar("Future in the Past Continuous", 10, "future-in-the-past-continuous-bar");
         var futureInThePastPerfect = createProgressBar("Future in the Past Perfect", 10, "future-in-the-past-perfect-bar");
         var futureInThePastPerfectContinuous = createProgressBar("Future in the Past Perfect Continuous", 10, "future-in-the-past-perfect-continuous-bar");
-
-        var others = createTitle("Others");
-        var phrasalVerbs = createProgressBar("Phrasal Verbs", 10, "phrasal-bar");
-
-        barsContainers[i].appendChild(articles);
-        barsContainers[i].appendChild(spelling);
-        barsContainers[i].appendChild(pronunciation);
-        barsContainers[i].appendChild(ob_pron);
-        barsContainers[i].appendChild(pos_pron);
-        barsContainers[i].appendChild(ref_pron);
-        barsContainers[i].appendChild(irr_verbs);
         
-        barsContainers[i].appendChild(presentTenses);
-        barsContainers[i].appendChild(presentSimple);
-        barsContainers[i].appendChild(presentContinuous);
-        barsContainers[i].appendChild(presentPerfect);
-        barsContainers[i].appendChild(presentPerfectContinuous);
 
-        barsContainers[i].appendChild(pastTenses);
-        barsContainers[i].appendChild(pastSimple);
-        barsContainers[i].appendChild(usedTo);
-        barsContainers[i].appendChild(pastContinuous);
-        barsContainers[i].appendChild(pastPerfect);
-        barsContainers[i].appendChild(pastPerfectContinuous);
-
-        barsContainers[i].appendChild(futureTenses);
-        barsContainers[i].appendChild(futureSimple);
-        barsContainers[i].appendChild(goingTo);
-        barsContainers[i].appendChild(futureContinuous);
-        barsContainers[i].appendChild(futurePerfect);
-        barsContainers[i].appendChild(futurePerfectContinuous);
-
-        barsContainers[i].appendChild(futureInThePastTenses);
-        barsContainers[i].appendChild(futureInThePastSimple);
-        barsContainers[i].appendChild(futureInThePastContinuous);
-        barsContainers[i].appendChild(futureInThePastPerfect);
-        barsContainers[i].appendChild(futureInThePastPerfectContinuous);
+        barsContainer.appendChild(articles);
+        barsContainer.appendChild(spelling);
+        barsContainer.appendChild(pronunciation);
+        barsContainer.appendChild(ob_pron);
+        barsContainer.appendChild(pos_pron);
+        barsContainer.appendChild(ref_pron);
+        barsContainer.appendChild(irr_verbs);
+        barsContainer.appendChild(phrasalVerbs);
         
-        barsContainers[i].appendChild(others);
-        barsContainers[i].appendChild(phrasalVerbs);
+        barsContainer.appendChild(presentTenses);
+        barsContainer.appendChild(presentSimple);
+        barsContainer.appendChild(presentContinuous);
+        barsContainer.appendChild(presentPerfect);
+        barsContainer.appendChild(presentPerfectContinuous);
 
-    }
+        barsContainer.appendChild(pastTenses);
+        barsContainer.appendChild(pastSimple);
+        barsContainer.appendChild(usedTo);
+        barsContainer.appendChild(pastContinuous);
+        barsContainer.appendChild(pastPerfect);
+        barsContainer.appendChild(pastPerfectContinuous);
+
+        barsContainer.appendChild(futureTenses);
+        barsContainer.appendChild(futureSimple);
+        barsContainer.appendChild(goingTo);
+        barsContainer.appendChild(futureContinuous);
+        barsContainer.appendChild(futurePerfect);
+        barsContainer.appendChild(futurePerfectContinuous);
+
+        barsContainer.appendChild(futureInThePastTenses);
+        barsContainer.appendChild(futureInThePastSimple);
+        barsContainer.appendChild(futureInThePastContinuous);
+        barsContainer.appendChild(futureInThePastPerfect);
+        barsContainer.appendChild(futureInThePastPerfectContinuous);
+        
 }
 
 function createTitle(title)

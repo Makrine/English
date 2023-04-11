@@ -7,19 +7,10 @@ body
 {
 background-color: lightblue;
 font-family: BreatheFireIii, sans-serif;
-}
-
-.container {
-display: flex;
-flex-direction: row;
-}
-
-.col {
-flex: 1;
 padding: 10px;
 }
 
-.avatar, h2 {
+h2 {
 text-align: center;
 }
 
@@ -45,11 +36,49 @@ color: black;
 .bar-group
 {
     font-size: 30px;
-    text-align: left;
+  
 }
 .lock-icon
 {
     width: 3%;
+}
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .button {
+    font-size: 20px;
+    padding: 16px 32px;
+    margin: 0 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+
+  .avatar{
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .button-left {
+    top: 0;
+    left: 0;
 }
 /* media query for mobile devices */
 @media (max-width: 768px) {
